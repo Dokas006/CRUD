@@ -1,7 +1,7 @@
 package Dominio;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+//import java.io.FileWriter;
+//import java.io.IOException;
 import java.util.Scanner;
 
 public class Estoque {
@@ -37,6 +37,7 @@ public class Estoque {
         this.quantidade = quantidade;
     }
 
+
     public void iniciarPrograma(){
        while (true){
            System.out.println("Selecione a função desejada");
@@ -66,7 +67,7 @@ public class Estoque {
 
 
     }
-    
+
     public void MostrarEstoque() {
         System.out.println("Estoque selecionado:");
         for (int i = 0; i < indice; i++) {
@@ -81,7 +82,13 @@ public class Estoque {
     }
 
     public void CadastrarProduto() {
+      if (indice == 20){
+          System.out.println("Seu estoque está cheio[Limite definido 20 itens]");
+          System.out.println("-------------------------------------------------");
+          return;
+      }
        while (true) {
+           indice++;
            System.out.println("Digite o nome do produto: ");
            String Produto;
            Produto = sc.next();
@@ -94,7 +101,6 @@ public class Estoque {
            System.out.println("Digite o valor do produto: ");
            double Preco = sc.nextDouble();
            this.valor[indice] = Preco;
-           indice++;
 
 
            System.out.println("Produto adicionado com sucesso!");
@@ -109,7 +115,7 @@ public class Estoque {
            if (opcao == 1) {
                continue;
            }
-           CriarArquivo();
+          // CriarArquivo();
            break;
        }
     }
@@ -143,10 +149,15 @@ public class Estoque {
         valor[indice - 1] = 0;
 
         indice--;
-        CriarArquivo();
+        //CriarArquivo();
     }
 
-    private void CriarArquivo(){
+    public void Sair(){
+        File file = new File("ListaDeProdutos/ListaDeProdutos.txt");
+        System.out.println("Acesse sua lista em: " + file.getAbsolutePath() );
+    }
+
+ /* private void CriarArquivo(){
         File file = new File("ListaDeProdutos/ListaDeProdutos.txt");
         if(!file.exists()){
             try {
@@ -174,13 +185,7 @@ public class Estoque {
 
 
     }
-
-    public void Sair(){
-        File file = new File("ListaDeProdutos/ListaDeProdutos.txt");
-        System.out.println("Acesse sua lista em: " + file.getAbsolutePath() );
-    }
-
-
+*/
 
 
 
