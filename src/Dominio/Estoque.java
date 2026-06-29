@@ -38,61 +38,35 @@ public class Estoque {
     }
 
     public void iniciarPrograma(){
-        System.out.println("Seja bem vindo!");
-        System.out.println("Selecione a função desejada");
-        System.out.println("""
+       while (true){
+           System.out.println("Selecione a função desejada");
+           System.out.println("""
                 [1-Cadastrar Produto]
                 [2-Mostrar Estoque]
                 [3-Deletar Produto]
                 [4-Sair]
                 """);
-            int opcao = sc.nextInt();
-        switch (opcao) {
-            case 1:
-                CadastrarProduto();
-                break;
-            case 2:
-                MostrarEstoque();
-                break;
-            case 3:
-                DeletarProduto();
-                break;
+           int opcao = sc.nextInt();
+           switch (opcao) {
+               case 1:
+                   CadastrarProduto();
+                   break;
+               case 2:
+                   MostrarEstoque();
+                   break;
+               case 3:
+                   DeletarProduto();
+                   break;
 
-            case 4:
-                Sair();
-                break;
-        }
+               case 4:
+                   Sair();
+                   return;
+           }
+       }
 
 
     }
-
-    public void retornarAoMenu(){
-        System.out.println("----------------------------------------");
-        System.out.println("Selecione a função desejada");
-        System.out.println("""
-                [1-Cadastrar Produto]
-                [2-Mostrar Estoque]
-                [3-Deletar Produto]
-                [4-Sair]
-                """);
-        int opcao = sc.nextInt();
-        switch (opcao) {
-            case 1:
-                CadastrarProduto();
-                break;
-            case 2:
-                MostrarEstoque();
-                break;
-            case 3:
-                DeletarProduto();
-                break;
-
-            case 4:
-                Sair();
-                break;
-        }
-    }
-
+    
     public void MostrarEstoque() {
         System.out.println("Estoque selecionado:");
         for (int i = 0; i < indice; i++) {
@@ -107,35 +81,37 @@ public class Estoque {
     }
 
     public void CadastrarProduto() {
-        System.out.println("Digite o nome do produto: ");
-        String Produto;
-        Produto = sc.next();
+       while (true) {
+           System.out.println("Digite o nome do produto: ");
+           String Produto;
+           Produto = sc.next();
 
-        this.produtos[indice] = Produto;
-        System.out.println("Digite a quantidade produto: ");
-            int Quantidade = sc.nextInt();
-            this.quantidade[indice] = Quantidade;
+           this.produtos[indice] = Produto;
+           System.out.println("Digite a quantidade produto: ");
+           int Quantidade = sc.nextInt();
+           this.quantidade[indice] = Quantidade;
 
-        System.out.println("Digite o valor do produto: ");
-            double Preco = sc.nextDouble();
-            this.valor[indice] = Preco;
-        indice++;
-        //Retorno
-        System.out.println("Produto adicionado com sucesso!");
-        System.out.println("ID: " + indice);
-        System.out.println("Produto: " + Produto.toUpperCase());
-        System.out.println("Quantidade: " + Quantidade);
-        System.out.println("Preço: " + Preco + "$");
-        System.out.println("---------------------------------------------");
+           System.out.println("Digite o valor do produto: ");
+           double Preco = sc.nextDouble();
+           this.valor[indice] = Preco;
+           indice++;
 
-        System.out.println("Deseja Adicionar Outro Produto? [1-SIM] [2-NÃO]");
-        int opcao = sc.nextInt();
-        if(opcao == 1){
-            System.out.println("------------------------------------------");
-          CadastrarProduto();
-        }
-        CriarArquivo();
-        retornarAoMenu();
+
+           System.out.println("Produto adicionado com sucesso!");
+           System.out.println("ID: " + indice);
+           System.out.println("Produto: " + Produto.toUpperCase());
+           System.out.println("Quantidade: " + Quantidade);
+           System.out.println("Preço: " + Preco + "$");
+           System.out.println("---------------------------------------------");
+
+           System.out.println("Deseja Adicionar Outro Produto? [1-SIM] [2-NÃO]");
+           int opcao = sc.nextInt();
+           if (opcao == 1) {
+               continue;
+           }
+           CriarArquivo();
+           break;
+       }
     }
 
     public void DeletarProduto() {
