@@ -79,6 +79,9 @@ javac -d out src\Dominio\*.java src\Test\*.java
 java -cp out Test.CrudTest
 ```
 
+<img width="472" height="210" alt="image" src="https://github.com/user-attachments/assets/5bb136ee-cee7-4ee3-a530-376b7fd32fcf" />
+
+
 # Autor
 
 Desenvolvido por **Pedro Belo** como projeto de estudos em Java.
