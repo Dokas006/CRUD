@@ -56,32 +56,6 @@ CrudTest.java
 ```
 
 ---
-
-# ✔️ INSTALAÇÃO WINDOWS
-
-Instalar JDK 21
-
-```
-winget install EclipseAdoptium.Temurin.21.JDK
-```
-
-Instalar Git 21
-
-```
-winget install Git.Git
-```
-Caso já possua o **Git** e o **JDK 21** instalados:
-
-```
-git clone https://github.com/PedroBeloNogueira/CRUD.git
-cd CRUD
-javac -d out src\Dominio\*.java src\Test\*.java
-java -cp out Test.CrudTest
-```
-
-<img width="472" height="210" alt="image" src="https://github.com/user-attachments/assets/5bb136ee-cee7-4ee3-a530-376b7fd32fcf" />
-
-
 # Autor
 
 Desenvolvido por **Pedro Belo** como projeto de estudos em Java.
