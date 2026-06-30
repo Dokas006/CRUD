@@ -126,7 +126,7 @@ public class Estoque {
             if (opcao == 1) {
                 continue;
             }
-
+            CriarArquivo();
 
             break;
         }
@@ -163,6 +163,7 @@ public class Estoque {
             this.quantidade[Id] = quantidade;
 
             System.out.println("Produto editado com sucesso!");
+            CriarArquivo();
 
 
         }
@@ -196,15 +197,44 @@ public class Estoque {
         valor[indice - 1] = 0;
 
         indice--;
+        CriarArquivo();
     }
 
         public void Sair () {
-        System.out.println("----------------------------------------------");
-        MostrarEstoque();
-            System.out.println("----------------------------------------------");
+        File file = new File("ListaDeProdutos/ListaDeProdutos.txt");
+        CriarArquivo();
+        System.out.println("Acesse sua lista em: " + file.getAbsolutePath());
+
     }
 
+        private void CriarArquivo(){
+        File file = new File("ListaDeProdutos/ListaDeProdutos.txt");
+        if(!file.exists()){
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
 
+        try(FileWriter fileWriter = new FileWriter(file);) {
+            for(int i = 0; i < indice; i++){
+                fileWriter.write(
+                        "ID: " + i +
+                                "| Produto: " + produtos[i].toUpperCase() +
+                                "| Valor: " + valor[i] +
+                                "| Quantidade: " + quantidade[i] + "\n");
+
+            }
+            System.out.println("-------------------------------------------");
+            System.out.println("Arquivo salvo com sucesso!");
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
+
+
+    }
 
 
 
