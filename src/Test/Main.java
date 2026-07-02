@@ -1,13 +1,12 @@
 package Test;
 import Dominio.Estoque;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-
-public class CrudTest {
-    static void main() {
+public class Main {
+  public static void main(String[] args) {
         Estoque estoque = new Estoque();
         estoque.iniciarPrograma();
+
+
 
 
 
